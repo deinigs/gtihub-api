@@ -10,6 +10,8 @@ import { GithubService } from 'src/app/shared/services/github.service';
 export class ProfileComponent implements OnInit {
 
   profile: any = null;
+  username: string = null;
+  repos: any = null;
 
   constructor(
     private router: Router,
@@ -20,6 +22,15 @@ export class ProfileComponent implements OnInit {
     console.log(this.activatedRouter);
     this.api.profile(this.activatedRouter.snapshot.params.username).subscribe((res: any) => {
       this.profile = res;
+      this.username = res.login;
+    }, err => {
+      console.error(err);
+    });
+  }
+
+  loadRepos() {
+    this.api.repos(this.username).subscribe((res: any) => {
+      this.repos = res;
     }, err => {
       console.error(err);
     });

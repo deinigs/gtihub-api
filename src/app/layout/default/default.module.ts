@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { UserSelectorComponent } from 'src/app/routes/user-selector/user-selector.component';
 import { ProfileComponent } from 'src/app/routes/profile/profile.component';
 import { RepoComponent } from 'src/app/routes/repo/repo.component';
@@ -35,7 +36,8 @@ import { RepoComponent } from 'src/app/routes/repo/repo.component';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
   ]
 })
 export class DefaultModule { }

@@ -33,4 +33,28 @@ export class GithubService {
         catchError(this.handleError)
       );
   }
+
+  repos(username: string): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/users/${username}/repos`)
+      .pipe(
+        retry(2),
+        tap(result => {
+          console.log(result);
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  commits(username: string, repoName: string): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/repos/${username}/${repoName}/commits`)
+      .pipe(
+        retry(2),
+        tap(result => {
+          console.log(result);
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+
 }

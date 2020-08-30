@@ -1,6 +1,6 @@
 <mat-card *ngIf="profile" class="card">
   <mat-card-header>
-  <img mat-card-avatar src="{{profile.avatar_url}}">
+    <img mat-card-avatar src="{{profile.avatar_url}}">
     <mat-card-title>{{profile.name}}</mat-card-title>
     <mat-card-subtitle>{{profile.login}}</mat-card-subtitle>
   </mat-card-header>
@@ -12,16 +12,16 @@
       <a href="https://github.com/{{profile.login}}?tab=following" target="_blank">following</a>
     </p>
       <ul>
-        <li>
+        <li *ngIf="profile.company">
           <mat-icon>business</mat-icon><span>{{profile.company}}</span>
         </li>
-        <li>
+        <li *ngIf="profile.location">
           <mat-icon>location_on</mat-icon><span>{{profile.location}}</span>
         </li>
-        <li>
+        <li *ngIf="profile.blog">
           <mat-icon>link</mat-icon><span>{{profile.blog}}</span>
         </li>
-        <li>
+        <li *ngIf="profile.email">
           <mat-icon>alternate_email</mat-icon><span>{{profile.email}}</span>
         </li>
       </ul>
@@ -30,6 +30,28 @@
     <a href="{{profile.html_url}}" target="_blank">
       <button mat-button>GITHUB</button>
     </a>
-    <button mat-button>REPOSITORIES</button>
+    <button mat-button (click)="loadRepos()">REPOSITORIES</button>
   </mat-card-actions>
 </mat-card>
+<mat-list id="repolist">
+  <mat-list-item *ngFor="let repo of repos" class="repo">
+    <mat-card>
+      <mat-card-header class="no-avatar">
+        <mat-card-title>{{repo.name}}</mat-card-title>
+        <mat-card-subtitle>{{repo.description}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        {{repo.language}}
+        <mat-icon>star_outline</mat-icon> {{repo.stargazers_count}}
+        <mat-icon>share</mat-icon> {{repo.forks_count}}
+      </mat-card-content>
+      <mat-card-actions>
+          <a href="{{repo.html_url}}" target="_blank">
+            <button mat-button>GITHUB</button>
+          </a>
+          <button mat-button>OPEN</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-list-item>
+</mat-list>
+

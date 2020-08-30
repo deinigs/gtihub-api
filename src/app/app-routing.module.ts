@@ -15,7 +15,7 @@ const routes: Routes = [{
     path: 'profile/:username',
     component: ProfileComponent
   }, {
-    path: 'repo',
+    path: 'repos/:username/:reponame',
     component: RepoComponent
   }]
 }];
