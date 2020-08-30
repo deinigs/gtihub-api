@@ -1,0 +1,13 @@
+mat-drawer-container {
+  height: 100%;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .content-body {
+    flex-grow: 4;
+  }
+}

@@ -1,4 +1,17 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<mat-drawer-container>
+  <mat-drawer mode="over" #drawer [opened]="false">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+  <mat-drawer-content class="flex-container">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()" class="icon">
+          <mat-icon>menu</mat-icon>
+      </button>
+      <app-header></app-header>
+    </mat-toolbar>
+    <div class="content-body">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </mat-drawer-content>
+</mat-drawer-container>
