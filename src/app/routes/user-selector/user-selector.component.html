@@ -1,1 +1,6 @@
-<p>user-selector works!</p>
+<mat-form-field appearance="fill">
+  <mat-label>Github Username</mat-label>
+  <input matInput [(ngModel)]="username">
+</mat-form-field>
+<br>
+<button mat-raised-button color="primary" (click)="gotoProfile()">Search</button>

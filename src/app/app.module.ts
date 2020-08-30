@@ -5,16 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layout/default/default.module';
-import { UserSelectorComponent } from './routes/user-selector/user-selector.component';
-import { ProfileComponent } from './routes/profile/profile.component';
-import { RepoComponent } from './routes/repo/repo.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UserSelectorComponent,
-    ProfileComponent,
-    RepoComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

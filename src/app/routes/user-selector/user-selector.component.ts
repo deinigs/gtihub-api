@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-selector',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSelectorComponent implements OnInit {
 
-  constructor() { }
+  username: string = "deinigs";
+
+  constructor(
+    private router: Router,
+    private activateRouter: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  gotoProfile() {
+    if (this.username) {
+      this.router.navigateByUrl(`/profile/${this.username}`);
+    } else {
+      console.error("No user selected!");
+    }
   }
 
 }

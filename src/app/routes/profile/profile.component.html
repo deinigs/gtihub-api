@@ -1,1 +1,35 @@
-<p>profile works!</p>
+<mat-card *ngIf="profile" class="card">
+  <mat-card-header>
+  <img mat-card-avatar src="{{profile.avatar_url}}">
+    <mat-card-title>{{profile.name}}</mat-card-title>
+    <mat-card-subtitle>{{profile.login}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{profile.followers}}
+      <a href="https://github.com/{{profile.login}}?tab=followers" target="_blank">followers</a> /
+      {{profile.following}}
+      <a href="https://github.com/{{profile.login}}?tab=following" target="_blank">following</a>
+    </p>
+      <ul>
+        <li>
+          <mat-icon>business</mat-icon><span>{{profile.company}}</span>
+        </li>
+        <li>
+          <mat-icon>location_on</mat-icon><span>{{profile.location}}</span>
+        </li>
+        <li>
+          <mat-icon>link</mat-icon><span>{{profile.blog}}</span>
+        </li>
+        <li>
+          <mat-icon>alternate_email</mat-icon><span>{{profile.email}}</span>
+        </li>
+      </ul>
+  </mat-card-content>
+  <mat-card-actions>
+    <a href="{{profile.html_url}}" target="_blank">
+      <button mat-button>GITHUB</button>
+    </a>
+    <button mat-button>REPOSITORIES</button>
+  </mat-card-actions>
+</mat-card>

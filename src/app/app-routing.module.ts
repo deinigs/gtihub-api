@@ -12,7 +12,7 @@ const routes: Routes = [{
     path: '',
     component: UserSelectorComponent
   }, {
-    path: 'profile',
+    path: 'profile/:username',
     component: ProfileComponent
   }, {
     path: 'repo',
