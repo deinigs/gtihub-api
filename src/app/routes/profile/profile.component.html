@@ -54,4 +54,9 @@
     </mat-card>
   </mat-list-item>
 </mat-list>
-
+<div class="loadmore" *ngIf="repos.length > 0 && !repoLoading && repoHasMore">
+  <button mat-button (click)="loadRepos()" color="warn">More...</button>
+</div>
+<div class="loading" *ngIf="repoLoading">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>

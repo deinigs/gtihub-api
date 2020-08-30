@@ -7,6 +7,10 @@
   }
 }
 
+mat-list {
+  padding-bottom: 10px;
+}
+
 mat-list-item.repo {
   height: auto;
   padding-top: 5px;
@@ -14,4 +18,16 @@ mat-list-item.repo {
   mat-card {
     width: 100%;
   }
+}
+
+.loadmore {
+  margin: 10px;
+
+  button {
+    width: 100%;
+  }
+}
+
+.loading {
+  margin: 10px;
 }

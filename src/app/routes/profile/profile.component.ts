@@ -11,7 +11,10 @@ export class ProfileComponent implements OnInit {
 
   profile: any = null;
   username: string = null;
-  repos: any = null;
+  repos: any = [];
+  repoPage: number = 1;
+  repoLoading: boolean = false;
+  repoHasMore: boolean = true;
 
   constructor(
     private router: Router,
@@ -29,10 +32,21 @@ export class ProfileComponent implements OnInit {
   }
 
   loadRepos() {
-    this.api.repos(this.username).subscribe((res: any) => {
-      this.repos = res;
+    if (!this.repoHasMore) {
+      return;
+    }
+    this.repoLoading = true;
+    this.api.repos(this.username, this.repoPage).subscribe((res: any) => {
+      if (res.length == 0) {
+        this.repoHasMore = false;
+      } else {
+        this.repos = [...this.repos, ...res];
+        this.repoPage++;
+      }
     }, err => {
       console.error(err);
+    }, () => {
+      this.repoLoading = false;
     });
   }
 }

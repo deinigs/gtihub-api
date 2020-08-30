@@ -34,8 +34,19 @@ export class GithubService {
       );
   }
 
-  repos(username: string): Observable<any> {
-    return this.http.get<any>(`${apiUrl}/users/${username}/repos`)
+  repos(username: string, page: number = 1): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/users/${username}/repos?page=${page}`)
+      .pipe(
+        retry(2),
+        tap(result => {
+          console.log(result);
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  repo(username: string, repoName: string): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/repos/${username}/${repoName}`)
       .pipe(
         retry(2),
         tap(result => {
