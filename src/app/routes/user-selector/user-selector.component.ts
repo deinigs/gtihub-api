@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserSelectorComponent implements OnInit {
 
-  username: string = "deinigs";
+  username: string = "";
 
   constructor(
     private router: Router,

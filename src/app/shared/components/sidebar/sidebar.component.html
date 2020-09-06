@@ -1,1 +1,17 @@
-<p>sidebar works!</p>
+<h2 class="sidebar-header">Github API</h2>
+<mat-divider></mat-divider>
+<mat-nav-list class="sidebar">
+  <a mat-list-item routerLink="/" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon>search</mat-icon>
+    <span>Search</span>
+  </a>
+  <a mat-list-item (click)="openInfoDialog()">
+    <mat-icon>info</mat-icon>
+    <span>About</span>
+  </a>
+  <a mat-list-item>
+    <mat-icon>alternate_email</mat-icon>
+    <span>Contact</span>
+  </a>
+</mat-nav-list>
+
