@@ -49,4 +49,8 @@ export class ProfileComponent implements OnInit {
       this.repoLoading = false;
     });
   }
+
+  gotoRepository(reponame: string) {
+    this.router.navigateByUrl(`/repos/${this.username}/${reponame}`);
+  }
 }

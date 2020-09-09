@@ -1,0 +1,34 @@
+.card {
+  margin: 5px;
+}
+
+mat-list {
+  padding-bottom: 10px;
+}
+
+mat-list-item.commit {
+  height: auto;
+  padding-top: 5px;
+
+  mat-card {
+    width: 100%;
+  }
+}
+
+.loadmore {
+  margin: 10px;
+
+  button {
+    width: 100%;
+  }
+}
+
+.loading {
+  margin: 10px;
+}
+
+.no-avatar {
+  .mat-card-header-text {
+    margin: 0px;
+  }
+}

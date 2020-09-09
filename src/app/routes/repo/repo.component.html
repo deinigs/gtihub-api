@@ -1,1 +1,62 @@
-<p>repo works!</p>
+<mat-card *ngIf="repo" class="card">
+  <mat-card-header class="no-avatar">
+    <mat-card-title>{{repo.name}}</mat-card-title>
+    <mat-card-subtitle>{{repo.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Repository data
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-list>
+        <mat-list-item> Private: {{repo.private}}</mat-list-item>
+        <mat-list-item> Owner: <a routerLink="/profile/{{repo.owner.login}}">{{repo.owner.login}}</a></mat-list-item>
+        <mat-list-item> Fork: {{repo.fork}} </mat-list-item>
+        <mat-list-item> Created: {{parseDate(repo.created_at)}} </mat-list-item>
+        <mat-list-item> Watchers: {{repo.watchers_count}} </mat-list-item>
+        <mat-list-item> Language: {{repo.language}} </mat-list-item>
+        <mat-list-item> Forked: {{repo.forks_count}} </mat-list-item>
+        <mat-list-item> Clone (SSH): {{repo.ssh_url}} </mat-list-item>
+        <mat-list-item> Clone (HTTPS): {{repo.clone_url}} </mat-list-item>
+       </mat-list>
+
+    </mat-expansion-panel>
+  </mat-card-content>
+  <mat-card-actions>
+      <a href="{{repo.html_url}}" target="_blank">
+        <button mat-button>GO TO GITHUB</button>
+      </a>
+      <button mat-button (click)="loadCommits()">COMMITS</button>
+  </mat-card-actions>
+</mat-card>
+<mat-list id="commitlist">
+  <mat-list-item *ngFor="let commit of commits" class="commit">
+    <mat-card>
+      <mat-card-header class="no-avatar">
+        <mat-card-title>{{commit.commit.message}}</mat-card-title>
+        <mat-card-subtitle>{{commit.committer.login}} commited on {{parseDate(commit.commit.committer.date)}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ul> Parents: {{commit.parents.length}}
+          <li *ngFor="let parent of commit.parents">
+            <a href="{{parent.html_url}}" target="_blank">{{parent.sha}}</a>
+          </li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+          <a href="{{commit.html_url}}" target="_blank">
+            <button mat-button>GO TO GITHUB</button>
+          </a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-list-item>
+</mat-list>
+<div class="loadmore" *ngIf="commits.length > 0 && !commitLoading && commitHasMore">
+  <button mat-button (click)="loadCommits()" color="warn">More...</button>
+</div>
+<div class="loading" *ngIf="commitLoading">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>

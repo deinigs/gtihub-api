@@ -56,8 +56,8 @@ export class GithubService {
       );
   }
 
-  commits(username: string, repoName: string): Observable<any> {
-    return this.http.get<any>(`${apiUrl}/repos/${username}/${repoName}/commits`)
+  commits(username: string, repoName: string, page: number = 1): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/repos/${username}/${repoName}/commits?page=${page}`)
       .pipe(
         retry(2),
         tap(result => {

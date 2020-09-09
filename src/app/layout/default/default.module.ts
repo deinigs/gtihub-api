@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { UserSelectorComponent } from 'src/app/routes/user-selector/user-selector.component';
 import { ProfileComponent } from 'src/app/routes/profile/profile.component';
 import { RepoComponent } from 'src/app/routes/repo/repo.component';
@@ -39,7 +40,8 @@ import { RepoComponent } from 'src/app/routes/repo/repo.component';
     MatInputModule,
     MatCardModule,
     MatListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule
   ]
 })
 export class DefaultModule { }

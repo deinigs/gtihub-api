@@ -31,3 +31,9 @@ mat-list-item.repo {
 .loading {
   margin: 10px;
 }
+
+.no-avatar {
+  .mat-card-header-text {
+    margin: 0px;
+  }
+}
