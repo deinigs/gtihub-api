@@ -10,19 +10,18 @@
           Repository data
         </mat-panel-title>
       </mat-expansion-panel-header>
-
-      <mat-list>
-        <mat-list-item> Private: {{repo.private}}</mat-list-item>
-        <mat-list-item> Owner: <a routerLink="/profile/{{repo.owner.login}}">{{repo.owner.login}}</a></mat-list-item>
-        <mat-list-item> Fork: {{repo.fork}} </mat-list-item>
-        <mat-list-item> Created: {{parseDate(repo.created_at)}} </mat-list-item>
-        <mat-list-item> Watchers: {{repo.watchers_count}} </mat-list-item>
-        <mat-list-item> Language: {{repo.language}} </mat-list-item>
-        <mat-list-item> Forked: {{repo.forks_count}} </mat-list-item>
-        <mat-list-item> Clone (SSH): {{repo.ssh_url}} </mat-list-item>
-        <mat-list-item> Clone (HTTPS): {{repo.clone_url}} </mat-list-item>
-       </mat-list>
-
+      <dl class="prop-list">
+        <dt>Owner</dt>
+        <dd><a routerLink="/profile/{{repo.owner.login}}">{{repo.owner.login}}</a></dd>
+        <dt>Created</dt>
+        <dd>{{parseDate(repo.created_at)}}</dd>
+        <dt>Language</dt>
+        <dd>{{repo.language}}</dd>
+        <dt>Clone (SSH)</dt>
+        <dd>{{repo.ssh_url}}</dd>
+        <dt>Clone (HTTPS)</dt>
+        <dd>{{repo.clone_url}}</dd>
+      </dl>
     </mat-expansion-panel>
   </mat-card-content>
   <mat-card-actions>
@@ -37,10 +36,15 @@
     <mat-card>
       <mat-card-header class="no-avatar">
         <mat-card-title>{{commit.commit.message}}</mat-card-title>
-        <mat-card-subtitle>{{commit.committer.login}} commited on {{parseDate(commit.commit.committer.date)}}</mat-card-subtitle>
+        <mat-card-subtitle>
+          {{commit.committer.login}} commited on {{parseDate(commit.commit.committer.date)}}
+          <br/>
+          <small>{{commit.sha}}</small>
+        </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <ul> Parents: {{commit.parents.length}}
+        <span class="ul-parent">Parents: {{commit.parents.length}}</span>
+        <ul>
           <li *ngFor="let parent of commit.parents">
             <a href="{{parent.html_url}}" target="_blank">{{parent.sha}}</a>
           </li>

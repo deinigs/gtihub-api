@@ -66,6 +66,4 @@ export class GithubService {
         catchError(this.handleError)
       );
   }
-
-
 }
