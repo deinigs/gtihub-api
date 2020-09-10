@@ -28,9 +28,9 @@
   </mat-card-content>
   <mat-card-actions>
     <a href="{{profile.html_url}}" target="_blank">
-      <button mat-button>GO TO GITHUB</button>
+      <button mat-stroked-button>GO TO GITHUB</button>
     </a>
-    <button mat-button (click)="loadRepos()">REPOSITORIES</button>
+    <button mat-stroked-button (click)="loadRepos()">REPOSITORIES</button>
   </mat-card-actions>
 </mat-card>
 <mat-list id="repolist">
@@ -47,15 +47,15 @@
       </mat-card-content>
       <mat-card-actions>
           <a href="{{repo.html_url}}" target="_blank">
-            <button mat-button>GO TO GITHUB</button>
+            <button mat-stroked-button>GO TO GITHUB</button>
           </a>
-          <button mat-button (click)="gotoRepository(repo.name)">OPEN</button>
+          <button mat-stroked-button (click)="gotoRepository(repo.name)">OPEN</button>
       </mat-card-actions>
     </mat-card>
   </mat-list-item>
 </mat-list>
 <div class="loadmore" *ngIf="repos.length > 0 && !repoLoading && repoHasMore">
-  <button mat-button (click)="loadRepos()" color="warn">More...</button>
+  <button mat-stroked-button (click)="loadRepos()" color="warn">More...</button>
 </div>
 <div class="loading" *ngIf="repoLoading">
   <mat-progress-bar mode="query"></mat-progress-bar>
